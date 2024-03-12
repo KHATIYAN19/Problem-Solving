@@ -1,0 +1,36 @@
+
+class Solution {
+
+    int findKRotation(int nums[], int n) {
+        int s=0;
+        int e=nums.length-1;
+         int ans=Integer.MAX_VALUE;
+         int i=-1;
+        while(s<=e){
+            int mid=s+(e-s)/2;
+            if(nums[s]<=nums[e]){
+                if(nums[s]<ans){
+                     i=s;
+                     ans=nums[s];
+                }
+                break;
+            }
+            if(nums[s]<=nums[mid]){
+                 if(nums[s]<ans){
+                      i=s;
+                      ans=nums[s];
+                 }
+                s=mid+1;
+            }else{
+                e=mid-1;
+                if(nums[mid]<ans){
+                    i=mid;
+                    ans=nums[mid];
+                }
+            }
+       
+        }
+      
+       return i;
+}
+}
